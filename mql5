@@ -1,0 +1,45 @@
+//+------------------------------------------------------------------+
+//|                      Support and Resistance trader EA            |
+//|                                           forexroboteasy.com     |
+//+------------------------------------------------------------------+
+
+#property copyright 'Forex Robot Easy Team'
+#property link      'forexroboteasy.com'
+
+// Global variables
+double support_level;
+double resistance_level;
+
+// Support and Resistance Trader Expert Advisor (EA)
+int start()
+{
+   // Calculate support and resistance levels
+   CalculateSupportAndResistance();
+
+   // Check if market is at support level
+   if (Bid <= support_level)
+   {
+      // Open a long position
+      OrderSend(Symbol(), OP_BUY, 0.1, Ask, 3, 0, 0, 'Support and Resistance trader EA', 0, 0, Green);
+   }
+   // Check if market is at resistance level
+   else if (Ask >= resistance_level)
+   {
+      // Open a short position
+      OrderSend(Symbol(), OP_SELL, 0.1, Bid, 3, 0, 0, 'Support and Resistance trader EA', 0, 0, Red);
+   }
+
+   return(0);
+}
+
+// Function to calculate support and resistance levels
+void CalculateSupportAndResistance()
+{
+   // TODO: Add code to calculate support and resistance levels based on trading strategies
+
+   // Set support and resistance levels (sample values for demonstration purposes)
+   support_level = 1.2000;
+   resistance_level = 1.2500;
+}
+
+//+------------------------------------------------------------------+
